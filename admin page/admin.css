@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.activities {
+    background-color: #363740;
+    color: #494d5e;
+    min-height: 100vh;
+    line-height: 2;
+    padding: 1rem;
+    width: 20vw;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+}
+
+.activities h3 {
+    text-align: center;
+    color: #E5E5E5;
+}
+
+.choose__list > li{
+    background-color: white;
+    color: #363740;
+    margin-block: 32px;
+    padding-left: 5px;
+}
+
+.choose__list > li:hover {
+    padding-left: 15px;
+    transition: all ease-in .4s
+}
+
+.choose__list a:hover {
+    transition: all ease-in-out 1s;
+}
+
+.main__section {
+    background-color: #E5E5E5;
+    padding: 1rem;
+}
+
+#main__section__first__div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#main__section__first__div > p {
+    font-weight: 700;
+    font-size: 24px;
+    padding-left: 5px;
+}
+
+.admin__profile__image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+}
+
+.admin__profile__image > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-inline: 1rem;
+}
+
+.admin__profile__image p::after {
+    content: '';
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #494d5e;
+    margin-left: 1rem;
+}
+
+.admin__profile__image p {
+    margin-right: 1rem;
+}
+
+.overview__content {
+    padding-top: 2rem;
+    display: flex;
+}
+
+.overview__details {
+    padding-top: .5rem  ;
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%; 
+     
+}
+
+.overview__content {
+    padding-top: 2rem;
+    display: flex;
+}
+
+.overview__details {
+    padding-top: .5rem  ;
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%; 
+     
+}
+
+.overview__breakdown {
+    background-color: #FFFFFF;
+    height: 100%;
+    width: 13rem;
+    align-self: center;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: .3rem;
+}
+
+.overview__breakdown p:first-child{
+    font-size: 26px;
+}
+.election__update {
+    width: 30%; 
+    padding: .5rem;
+}
+
+
+.main__footer {
+    background-color: rgb(25, 23, 23);
+    color: white;
+    min-height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .main__section {
+        padding: 0;
+    }
+    .candidate__info {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,60 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E5E5E5;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    }
+
+main {
+    display: flex;
+}
+     
+.section__two {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    row-gap: 30px;
+}
+
+.create__office, .create__party  {
+    background-color: white;
+    padding: 25px;
+    
+}
+
+label {
+    display: block;
+    padding-bottom: .6rem;
+} 
+
+.input__area {
+    width: 18rem;
+    padding: 12px;
+    border-radius: 5px;
+    outline: none;
+    margin-block: .5rem;
+}
+
+[type = "submit"] {
+    width: 18rem;
+    padding: 12px;
+    border-radius: 5px;
+    outline: none;
+    margin-block: .5rem;
+    font-size: inherit;
+    background-color: aqua;
+}
+
+.section__two h2 {
+    padding-bottom: 1rem;
+}
+ 
+
