@@ -25,7 +25,7 @@ loginButton.addEventListener('click', (event) => {
         console.log(error)
     }
 
-    if(userPassword.length <= 6) {
+    if( userPassword !== '' && userPassword.length <= 6) {
         error.push(`Password cannot be less than six characters`)
         console.log(error)
     }
