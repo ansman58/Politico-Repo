@@ -40,7 +40,6 @@ body {
 }
 
 .candidate__profile{
-    /* margin: 2rem; */
     text-align: center;
     background-color: white;
 }
@@ -68,6 +67,5 @@ body {
 @media (max-width:600px) {
     .candidate__info {
         grid-template-columns: 1fr;
-        /* row-gap: 2rem; */
     }
 }
