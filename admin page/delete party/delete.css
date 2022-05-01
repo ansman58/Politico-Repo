@@ -1,0 +1,90 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #E5E5E5;
+}
+
+.wrapper {
+    display: flex;
+}
+
+
+main{ 
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-block: 2rem;
+}
+
+.to__be__deleted {
+    display: flex;
+    background-color: white;
+    max-width: 70%;
+    margin-left: 15%;
+}
+
+.to__be__deleted:nth-child(even) {
+    background-color: #F2F2F2;
+    border-block: 1px solid #F2F2F2;
+}
+
+.to__be__deleted * {
+     margin: 1rem;
+     flex: 1;
+}
+
+.logo {
+    height: auto;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.delete-icon {
+    color: red;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.edit-icon {
+    color: green;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.modal {
+    border: none;
+    font-size: 24px;
+    padding: 4rem;
+    position: relative;  
+    left: 21%;
+    top: 62px;
+    background-color: #363740;
+    font-weight: 700;
+}
+
+.modal > p {
+    color: white;
+}
+
+.close__button {
+    padding: 12px;
+    width: 9rem;
+    border-radius: 15px;
+    font-size: 18px;
+    margin: 12px;
+    margin-top: 21px;
+    border: none;
+    cursor: pointer;
+}
+
+.close__button:hover {
+    background-color: red;
+    color: white;
+}
