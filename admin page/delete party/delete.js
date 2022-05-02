@@ -14,7 +14,7 @@ deleteParty.addEventListener('click', (event) => {
 
 
 
-closeModal.addEventListener('click', () => {
+ closeModal.addEventListener('click', () => {
 
-                let response = openModal.close();
-})
+                 let response = openModal.close();
+ })

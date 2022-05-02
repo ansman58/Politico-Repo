@@ -28,21 +28,42 @@
         <div class="view__section">
             <div class="candidate__profile">
                 <img src="../images/politician1.jpg"  class="image" alt="">
-                <h3>Atiku Abubakar</h3>
-                <p>President</p>
-            <button type="submit">Vote Me</button>
+                <h3 data-type="candidate">Atiku Abubakar</h3>
+                <dialog class="modal">
+                    <p>Modal 3</p>
+                    <form method="modal">
+                        <button type="submit" class="yes-btn">Yes</button>
+                        <button type="submit" class="no-btn">No</button>
+                    </form>
+                </dialog>
+                <p class="office">President</p>
+            <button type="submit" data-name="name">Vote Abubakar</button>
             </div>
-            <div class="candidate__profile">
+             <div class="candidate__profile">
                 <img src="../images/politician2.jpg"  class="image" alt="">
                 <h3>Peter Obi</h3>
-                <p>Governor</p>
-                <button type="submit">Vote Me</button>
+                <dialog class="modal">
+                    <p>Modal 2</p>
+                    <form method="modal">
+                        <button type="submit" class="yes-btn">Yes</button>
+                        <button type="submit" class="no-btn">No</button>
+                    </form>
+                </dialog>
+                <p data-type="candidate">Governor</p>
+                <button type="submit">Vote Peter Obi</button>
             </div>
             <div class="candidate__profile">
                 <img src="../images/politician3.jpg"  class="image" alt="">
                 <h3>Asiwaju Tinubu</h3>
-                <p>President</p>
-                <button type="submit">Vote Me</button>
+                <dialog class="modal">
+                    <p>Modal 3</p>
+                    <form method="modal">
+                        <button type="submit" class="yes-btn">Yes</button>
+                        <button type="submit" class="no-btn">No</button>
+                    </form>
+                </dialog>
+                <p data-type="candidate"class="office">President</p>
+                <button type="submit" data-name="name">Vote Asiwaju</button>
             </div>
         </div>
     </section>

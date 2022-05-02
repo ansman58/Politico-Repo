@@ -1,8 +1,23 @@
-const button = document.querySelectorAll('[type = "submit"]') 
+const voteMe = document.querySelectorAll('button');
+const modal = document.querySelector('.modal');
 
-button.addEventListener('click',(event) => {
-    key = event.taget;
-    for(let i = 0; i < button.length; i++) {
-        alert(button[i]);
-    }
-})
+
+let voted;
+let showModal;
+
+// const display = voteMe.textContent
+voteMe.forEach(element => {
+    element.addEventListener('click', (event) => {
+        // modal.showModal();
+        // element.textContent = `Hellooooooo`
+        element.querySelector('.modal').showModal()
+ 
+      })
+});
+
+
+
+
+
+
+
