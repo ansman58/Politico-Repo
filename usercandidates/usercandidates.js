@@ -1,23 +1,17 @@
-const voteMe = document.querySelectorAll('button');
-const modal = document.querySelector('.modal');
-
+const voteMe = document.querySelectorAll("button");
+const modal = document.querySelector(".modal");
+const sss = document.querySelectorAll(".candidate__profile");
 
 let voted;
 let showModal;
 
-// const display = voteMe.textContent
-voteMe.forEach(element => {
-    element.addEventListener('click', (event) => {
-        // modal.showModal();
-        // element.textContent = `Hellooooooo`
-        element.querySelector('.modal').showModal()
- 
-      })
+
+sss.forEach((element) => {
+  element.addEventListener("click", (event) => {
+    const target = event.target;
+    if(target.classList.contains('btns')) {
+      element.querySelector('.modal').showModal()
+    }
+
+  });
 });
-
-
-
-
-
-
-
