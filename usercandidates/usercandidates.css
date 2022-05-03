@@ -54,6 +54,15 @@ body {
 .modal{
     background-color: #E5E5E5;
     border-radius: 10px;
+    width: 50%;
+    margin: auto;
+    height: 13rem;
+    padding-block: 1rem;
+    
+}
+
+.moodal::backdrop{
+    background-color: #000;
 }
 
 @media (max-width: 800px) {

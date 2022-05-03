@@ -11,6 +11,10 @@ candidateProfile.forEach((element) => {
     const target = event.target;
     if(target.classList.contains('btns')) {
       element.querySelector('.modal').showModal()
+      element.querySelector('.modal2').textContent = `Are you sure you wnat to ?`
+      if(document.querySelector('.yes-btn')) {
+        return `You have successfully voted this candidate`
+      }
     }
 
   });

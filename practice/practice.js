@@ -1,6 +1,7 @@
-const div = document.querySelector('div');
-const line = document.querySelectorAll('.line');
+const menuUl = document.querySelector('.menu__ul');
+const hamburger = document.querySelector('.hamburger')
 
-div.addEventListener('click', () => {
-    alert("hiiiii")
+hamburger.addEventListener('click', () => {
+    menuUl.classList.toggle('active')
+    // menuUl.style.display = "block";
 })

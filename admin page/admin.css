@@ -16,17 +16,55 @@ a {
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #E5E5E5;
+    /* background-image: url(../images/homepage222.jpg);
+    background-size: cover; */
+    /* background-position: 0%; */
+    background-color: #E2E2E2;
 }
 
 .homepage__main__section {
-    /* background-color: #E5E5E5;
-    padding: 1rem; */
+       display: grid;
+       grid-template-columns: 1fr 3fr;
 }
 
 #main__section__first__div {
     display: flex;
     justify-content: space-between;
     position: relative;
+}
+
+.activities {
+    background-color: #363740;
+    color: #494d5e;
+    /* min-height: 100vh; */
+    line-height: 2;
+    padding: 1rem;
+    width: 20vw;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    color: #fff;
+}
+
+.activities h3 {
+    text-align: center;
+    color: #E5E5E5;
+}
+
+.choose__list > li{
+    background-color: white;
+    color: #363740;
+    margin-block: 32px;
+    padding-left: 5px;
+}
+
+.choose__list > li:hover {
+    padding-left: 15px;
+    transition: all ease-in .4s
+}
+
+.choose__list a:hover {
+    transition: all ease-in-out 1s;
 }
 
 #main__section__first__div > p {
@@ -37,9 +75,10 @@ body {
 
 .admin__profile__image {
     display: flex;
-    /* justify-content: flex-end; */
+    justify-content: flex-end;
     align-items: center;
     width: 30%;
+    color: #fff;
 }
 
 .admin__profile__image > img {
@@ -110,6 +149,7 @@ body {
 .election__update {
     width: 30%; 
     padding: .5rem;
+    background-color: #fff;
 }
 
 
@@ -123,9 +163,9 @@ body {
 }
 
 [data-type = "office"], [data-type = "party"] {
-    padding: .5rem;
+    padding: .4rem;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: white;
     background-color: green;
     cursor: pointer;
@@ -138,11 +178,6 @@ body {
 }
 
 @media (max-width: 800px) {
-    .homepage__main__section {
-        display: flex;
-        flex-direction: column;
-    }
-
     .election__update {
         width: 100%; 
         /* padding: .5rem; */

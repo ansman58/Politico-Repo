@@ -1,10 +1,9 @@
-const signupBtn = document.querySelector('.signup__button');
-const password = document.querySelector([type = "password"]).value.trim()
-const confirmPassword = document.querySelector([type = "confirm_password"]).value.trim()
-const phoneNumber = document.querySelector('#pNumber').value.trim();
-const selectRole = document.querySelector('.roles').value.trim();
+const hamburger = document.querySelector('.hamburger')
+const menuList = document.querySelector('.menu__ul');
+const loginButton = document.querySelector('.login__submit__button')
 
-signupBtn.addEventListener('click', () {
-   return password === '' ? `Password cannot be empty` : password
+
+ hamburger.addEventListener('click', () => {
+    menuList.classList.toggle('active');
 });
 
