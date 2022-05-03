@@ -67,7 +67,7 @@ body {
 }
 
 .home__section {
-    /* min-height: 100vh; */
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,7 +85,7 @@ body {
     /* Selects all the children of .home__section */
 .home__section * {
     margin: 17px;
-    position: relative;
+    /* position: relative; */
     z-index: 11;
 }
 
@@ -124,19 +124,17 @@ body {
     }
 
     .home__section {
-        /* padding: 20px; */
         text-align: center;
-        /* min-height: 50vh; */
+        padding-inline: 2px;
     }
 
     .home__section p {
         font-size: 16px;
+        padding-inline: 0px;
     }
 
     .home__section * {
-        margin: 7px;
-        /* position: relative;
-        z-index: 11; */
+        margin: 2rem 7px;
     }
 
     .menu__ul {
