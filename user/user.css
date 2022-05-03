@@ -1,5 +1,8 @@
 body {
-    background-color: #E5E5E5;
+    /* background-color: #E5E5E5; */
+    background-image: url(../images/homepage222.jpg);
+    background-size: cover;
+    background-position: 0%;
 }
 
 .vote__section {
@@ -41,6 +44,8 @@ body {
 
 .candidate__profile{
     text-align: center;
+    /* background-color: white; */
+    margin: 5rem;
     background-color: white;
 }
 
@@ -60,12 +65,17 @@ body {
 
 #candidate__profile {
     text-align: center;
-    background-color: white;
+    /* background-color: white; */
     padding-block: 12px ;
 }
 
 @media (max-width:600px) {
     .candidate__info {
         grid-template-columns: 1fr;
+        margin-block: 1rem;
+    }
+
+    .candidate__profile {
+        margin: 2rem 5rem;
     }
 }
