@@ -12,7 +12,6 @@ body{
     display: flex;
 }
 
-
 main{ 
     width: 100%;
     min-height: 100vh;
@@ -20,14 +19,23 @@ main{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-block: 2rem;
+    margin-block: 8rem 4rem;
+}
+
+.create__btns {
+    margin-bottom: 1rem;
+    margin-left: 35rem;
+}
+
+.create__btns [data-type="office"] {
+    margin-left: 2rem;
 }
 
 .to__be__deleted {
     display: flex;
     background-color: white;
-    max-width: 70%;
-    margin-left: 15%;
+    /* max-width: 70%; */
+    /* margin-left: 15%; */
 }
 
 .to__be__deleted:nth-child(even) {
@@ -59,7 +67,6 @@ main{
 }
 
 .modal {
-    /* border: none; */
     font-size: 24px;
     padding: 4rem;
     position: relative;  
@@ -88,3 +95,18 @@ main{
     background-color: red;
     color: white;
 }
+
+.create__party__dailog{
+    font-size: 24px;
+    padding: 4rem;
+    position: relative;  
+    left: 31%;
+    top: 62px;
+    font-weight: 700;
+}
+
+/* @media (max-width:900px) {
+    main {
+        overflow: auto;
+    }
+} */
