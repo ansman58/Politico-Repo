@@ -1,7 +1,17 @@
-const menuUl = document.querySelector('.menu__ul');
-const hamburger = document.querySelector('.hamburger')
+// const myForm = document.querySelector('form#name')
+// const formValue = myForm.value
+// const btn = document.querySelector('#myBtn')
 
-hamburger.addEventListener('click', () => {
-    menuUl.classList.toggle('active')
-    // menuUl.style.display = "block";
+
+
+
+
+const myForm = document.querySelector('#name');
+const formValue = myForm.value;
+const btn = document.querySelector('#myBtn');
+
+btn.addEventListener('click', (event) => {
+    event.preventDefault
+    // alert('hiiiii')
+    alert(myForm.value)
 })

@@ -1,16 +1,20 @@
 body {
     background-image: url(../images/homepage222.jpg);
     background-size: cover;
+    background-color: rgba(105, 62, 62, 0.757);
+    background-blend-mode: multiply;
 }
 
 .view__section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    /* grid-template-columns: repeat(3, 1fr); */
     /* width: 100%; */
+    flex-direction: column;
     margin: 5rem 1rem;
+    row-gap: 2rem;
     /* background-color: #E5E5E5; */
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 
 }
 
@@ -63,6 +67,20 @@ body {
 
 .moodal::backdrop{
     background-color: #000;
+}
+
+.office-cand .title{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    /* text-align: center; */
+    /* background-color: white; */
+}
+
+.list-cand {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
 }
 
 @media (max-width: 800px) {

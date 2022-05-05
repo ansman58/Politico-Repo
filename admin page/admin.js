@@ -1,58 +1,59 @@
-// const officeSubmitBtn = document.querySelector('.submit_for_office');
-// const createOffice = document.querySelector('.create__political__office');
-
-
-// const party = {
-//     "id": 1,
-//     "name": "APC",
-//     "hqAddress": "Abuja",
-//     "logoUrl": "igggb"
-// }
-
-// function createParty(id, name, hqAddress,logoUrl){
-//     for(let keys in party) {
-//         console.log("heyy")
-//     }
-//     officeSubmitBtn.addEventListener('click', () => {
-        
-//     })
-// }
-
-// creatyParty();
-const cardContainer = document.querySelector('.cards-container')
-const myIcons = document.querySelectorAll('icon-container')
-const editIcon = document.querySelector('.edit-icon')
-const deleteIcon = document.querySelector('.delete-icon')
-const deleteIt = document.querySelectorAll('to__be__deleted')
-
-// console.log(cardContainer.length)
-
-// myIcons.addEventListener('click', (event) => {
-//     const a = event.target
-//     console.log(a.length)
-//     if(a.classList.contains('icon-container')) {
-        
-//     }
-// })
-
 // Create a political party
-const createParty = document.querySelector('.create__party') 
-const createPartyModal = document.querySelector('.create__party__dailog')
-const createOffice = document.querySelector('.create__office__dialog')
-const createOfficeModal = document.querySelector('.create__office__dialog')
-const creaeOfficeBtn = document.querySelector('#create__party__btn')
+const createParty = document.querySelector('#create__party')
+const modal = document.querySelector('.create__party__dialog')
 
 createParty.addEventListener('click', () => {
-   let openModal = createPartyModal.showModal();
-
-   if(creaeOfficeBtn) {
-        
-   }
+    modal.showModal()
 })
 
-createOffice.addEventListener('click', () => {
-    createOfficeModal.showModal();
+const modalSubmitBtn = document.querySelector('#create__party__btn')
+// const partyNameInput = document.querySelector('#"party__name')
+
+modalSubmitBtn.addEventListener('click', () => {
+    alert(partyNameInput)
+    // if(partyNameInput)
+  
+})
+
+const partyBtn = document.querySelector('#create__party__btn')
+// const partyNameInput = document.querySelector('#party__name')
+const partyHqAddress = document.querySelector('#hq__address')
+
+partyBtn.addEventListener('click', () => {
+       
 })
 
 
+// working with createOffice buton
 
+const officeBtn = document.querySelector('#create__office')
+
+
+officeBtn.addEventListener('click', createOffice)
+
+function createOffice() {
+    const officeModal = document.querySelector('.create__office__dialog').showModal()
+}
+
+// end of working with createOffice buton
+
+
+// working with delete icons
+    const iconsContainer = document.querySelector('#pdp__delete__icon')
+
+    const toBeDel = document.querySelectorAll('.to__be__deleted')
+    const toBeDelArr = Array.from(toBeDel)
+
+    const delElements = document.querySelectorAll('.icon-container')
+    const change = Array.from(delElements)
+    const deleteIcon = document.querySelectorAll('.delete-icon')
+    const delIconArray = Array.from(deleteIcon)
+    // let a =  element.classList.contains('del') 
+    
+        change.forEach()
+            let it = filtered.children
+                    
+            console.log(change)
+
+
+// end of working on delete icons
