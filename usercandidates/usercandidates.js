@@ -256,14 +256,14 @@ const generateOfficeHtml = (obj) => {
   parent.appendChild(list);
   section.appendChild(parent);
 
-
+  
 
   console.log (obj.name, candidateList)
 
   if (candidateList) {
     
     candidateList.forEach((element) => {
-
+    
       const partyData = party.find((el) =>el.id === element.party
       );
       const userData = user.find((el) => el.id === element.candidate);
@@ -271,7 +271,7 @@ const generateOfficeHtml = (obj) => {
     });
   }
 
-  console.log(count)
+  
 };
 
 office.forEach((el) => generateOfficeHtml(el));
