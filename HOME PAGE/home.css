@@ -10,6 +10,7 @@
     background-color: #51CEF5;
     display: flex;
     height: 10vh;
+    /* padding-block: 3rem; */
     justify-content: space-around;
     align-items: center;
     position: sticky;
@@ -67,7 +68,7 @@ body {
 }
 
 .home__section {
-    min-height: 80vh;
+    padding-block: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,7 +113,7 @@ body {
 .main__footer {
     background-color: rgb(25, 23, 23);
     color: white;
-    min-height: 12vh;
+    padding-block: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;

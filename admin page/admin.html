@@ -74,18 +74,33 @@
                 <dialog class="create__party__dialog">
                     <div class="create__party">
                         <h2>Create party</h2>
-                        <form id="party__form">
-                            <div>
+                        <form id="party__form" method="dialog">
+                            <select name="" id="">
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                            </select>
+                            <!-- <div>
                                 <label for="party__name">Party Name</label>
-                                <input class="input__area"  type="text" id="party__name" required>
+                                <input class="input__area"  type="text" id="party__name">
+                            </div> -->
+                            <div>
+                                <select id="hq__address" class="input__area" name="hq__address" id="">
+                                    <option value="hq__address"></option>
+                                    <option value="hq__address"></option>
+                                    <option value="hq__address"></option>
+                                </select>
+                                <!-- <label for="hq__address">Headquarter Address</label> -->
+                                <!-- <input class="input__area"  type="text" id="hq__address" required> -->
                             </div>
                             <div>
-                                <label for="hq__address">Headquarter Address</label>
-                                <input class="input__area"  type="text" id="hq__address" required>
-                            </div>
-                            <div>
-                                <label for="logo__url">Party Logo</label>
-                                <input class="input__area" type="file" id="logo__url" required>
+                                <select name="" id="">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                                <!-- <label for="logo__url">Party Logo</label>
+                                <input class="input__area" type="file" id="logo__url" required> -->
                             </div>
                             <button id="create__party__btn" type="submit">Submit</button>
                         </form>

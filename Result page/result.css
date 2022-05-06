@@ -1,0 +1,6 @@
+.result__main__section {
+    background-color: rgb(75, 68, 68);
+    background-image: url(../images/homepage222.jpg);
+    padding-block: 15rem;
+    background-blend-mode: multiply;
+}

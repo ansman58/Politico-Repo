@@ -120,7 +120,7 @@ const user = [
 const candidate = [
   {
     id: 1,
-    office: 1,
+    office: 2,
     party: 4,
     candidate: 2,
   },
@@ -154,11 +154,11 @@ const vote = [
   },
 ];
 
-let voted;
-let showModal;
+// let voted;
+// let showModal;
 
 const generateCandidateCard = (officeObj, partyObj, userObj) => {
-  const parent = document.querySelector(`.${officeObj.name}`)
+  const parent = document.querySelector(`.${officeObj.name}`);
 
   const candProfDiv = document.createElement("div");
   const candProfImg = document.createElement("img");
@@ -182,45 +182,52 @@ const generateCandidateCard = (officeObj, partyObj, userObj) => {
   modalBtn2.setAttribute("class", "no-btn");
   modalBtn1.setAttribute("type", "submit");
   modalBtn2.setAttribute("type", "submit");
-  partyName.setAttribute("class", "office")
-  officeName.setAttribute("class", "office")
-  subBtn.setAttribute("class", "btns")
+  partyName.setAttribute("class", "office");
+  officeName.setAttribute("class", "office");
+  subBtn.setAttribute("class", "btns");
   subBtn.setAttribute("type", "submit");
 
   candProfImg.setAttribute("src", userObj.passportUrl);
   candProfHeader.textContent = `${userObj.lastname} ${userObj.firstname}`;
-  modalP.textContent = `You are about to vote ${userObj.lastname} ${userObj.firstname} as ${officeObj.name}`
+  modalP.textContent = `You are about to vote ${userObj.lastname} ${userObj.firstname} as ${officeObj.name}`;
   modalBtn1.textContent = `Yes`;
   modalBtn2.textContent = `No`;
   partyName.textContent = partyObj.name;
   officeName.textContent = officeObj.name;
-  subBtn.textContent = `Vote ${userObj.lastname}`
+  subBtn.textContent = `Vote ${userObj.lastname}`;
 
-
-  candProfForm.appendChild(modalBtn1)
-  candProfForm.appendChild(modalBtn2)
-  candProfDialog.appendChild(modalP)
-  candProfDialog.appendChild(candProfForm)
-  candProfDiv.appendChild(candProfImg)
-  candProfDiv.appendChild(candProfHeader)
-  candProfDiv.appendChild(candProfDialog)
-  candProfDiv.appendChild(partyName)
-  candProfDiv.appendChild(officeName)
-  candProfDiv.appendChild(subBtn)
-  parent.appendChild(candProfDiv)
+  candProfForm.appendChild(modalBtn1);
+  candProfForm.appendChild(modalBtn2);
+  candProfDialog.appendChild(modalP);
+  candProfDialog.appendChild(candProfForm);
+  candProfDiv.appendChild(candProfImg);
+  candProfDiv.appendChild(candProfHeader);
+  candProfDiv.appendChild(candProfDialog);
+  candProfDiv.appendChild(partyName);
+  candProfDiv.appendChild(officeName);
+  candProfDiv.appendChild(subBtn);
+  parent.appendChild(candProfDiv);
 
   modalBtn1.onclick = (e) => {
-    e.preventDefault()
-  candProfDialog.close()
-    
-    alert(`You have voted for ${userObj.lastname} ${userObj.firstname}`)
-  }
+    e.preventDefault();
+    candProfDialog.close();
 
+    alert(`You have voted for ${userObj.lastname} ${userObj.firstname}`);
+  };
+
+  modalBtn2.onclick = (e) => {
+    e.preventDefault();
+
+    candProfDialog.close();
+
+    alert(
+      `You have rejected ${userObj.lastname} ${userObj.firstname} as ${officeObj.name}`
+    );
+  };
 };
 
 const generateOfficeHtml = (obj) => {
   const candidateList = candidate.filter((el) => el.office === obj.id);
-  
 
   // const candProfDiv = document.createElement("div");
   // const candProfImg = document.createElement("img");
@@ -256,40 +263,28 @@ const generateOfficeHtml = (obj) => {
   parent.appendChild(list);
   section.appendChild(parent);
 
-  
-
-  console.log (obj.name, candidateList)
+  // console.log (obj.name, candidateList)
 
   if (candidateList) {
-    
     candidateList.forEach((element) => {
-    
-      const partyData = party.find((el) =>el.id === element.party
-      );
+      const partyData = party.find((el) => el.id === element.party);
       const userData = user.find((el) => el.id === element.candidate);
-      generateCandidateCard(obj, partyData, userData)
+      generateCandidateCard(obj, partyData, userData);
     });
   }
-
-  
 };
 
 office.forEach((el) => generateOfficeHtml(el));
 
 const candidateProfile = document.querySelectorAll(".candidate__profile");
 
-
 candidateProfile.forEach((element) => {
-
   element.addEventListener("click", (event) => {
     const target = event.target;
-    
+
     if (target.classList.contains("btns")) {
       element.querySelector(".modal").showModal();
-      element.querySelector(
-        ".modal2"
-      )
-
+      // element.querySelector(".modal2");
     }
   });
 });
