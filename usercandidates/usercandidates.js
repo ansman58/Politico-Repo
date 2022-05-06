@@ -12,7 +12,7 @@ const office = [
   {
     id: 2,
     type: "legislative",
-    name: "Senate",
+    name: "Senator",
   },
   {
     id: 3,

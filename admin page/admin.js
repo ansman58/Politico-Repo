@@ -122,11 +122,14 @@ const office = [
     {
       id: 4,
       name: "APGA",
-      hqAddress: "SDP",
+      hqAddress: "Abuja",
       logoURL:
         "https://www.inecnigeria.org/wp-content/uploads/2019/02/SDP-Constitution.pdf",
     },
   ];
+
+  const check = party.map(el  => el.hqAddress)
+  console.log(check)
   
   const user = [
     {
@@ -214,14 +217,14 @@ const office = [
 
 // *** DATA LIST ENDS ****//
 
-const createNewParty = () => {
+const createNewParty = (logoObj, partyObj, hqAddressOb) => {
     createParty.addEventListener('click', () => {
         modal.showModal()
     })
 
 
     const partyList = party.filter(el => el.name)
-    console.log(partyList)
+    // console.log(partyList)
 }
-createNewParty()
-
+createNewParty(party.logoURL, party.name, party.hqAddress)
+console.log(party.hqAddress)

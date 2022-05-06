@@ -1,4 +1,4 @@
-export const office = [
+const office = [
   {
     id: 1,
     type: "federal",
@@ -7,7 +7,7 @@ export const office = [
   {
     id: 2,
     type: "legislative",
-    name: "Senate",
+    name: "Senator",
   },
   {
     id: 3,
@@ -31,9 +31,9 @@ export const office = [
   },
 ];
 
-export const party = [
+const party = [
   {
-    id: 0,
+    id: 1,
     name: "PDP",
     hqAddress: "Abuja",
     logoURL:
@@ -41,7 +41,7 @@ export const party = [
   },
 
   {
-    id: 1,
+    id: 2,
     name: "APC",
     hqAddress: "Osun",
     logoURL:
@@ -65,7 +65,7 @@ export const party = [
   },
 ];
 
-export const user = [
+const user = [
   {
     id: 1,
     firstname: "Anslem",
@@ -73,7 +73,7 @@ export const user = [
     othername: "",
     email: "emaukjhhd",
     phoneNumber: "868576576",
-    passportUrl: "./images/politician1.jpg",
+    passportUrl: "../images/politician1.jpg",
     isAdmin: true,
     role: "user",
   },
@@ -84,7 +84,7 @@ export const user = [
     othername: "",
     email: "emaukjhhd",
     phoneNumber: "868576576",
-    passportUrl: "./images/politician1.jpg",
+    passportUrl: "../images/politician1.jpg",
     isAdmin: false,
     role: "politician",
   },
@@ -95,7 +95,7 @@ export const user = [
     othername: "",
     email: "emaukjhhd",
     phoneNumber: "868576576",
-    passportUrl: "./images/politician1.jpg",
+    passportUrl: "../images/politician1.jpg",
     isAdmin: false,
     role: "politician",
   },
@@ -106,16 +106,22 @@ export const user = [
     othername: "",
     email: "emaukjhhd",
     phoneNumber: "868576576",
-    passportUrl: "./images/politician1.jpg",
+    passportUrl: "../images/politician1.jpg",
     isAdmin: false,
     role: "user",
   },
 ];
 
-export const candidate = [
+const candidate = [
   {
     id: 1,
-    office: 1,
+    office: 2,
+    party: 4,
+    candidate: 2,
+  },
+  {
+    id: 1,
+    office: 4,
     party: 4,
     candidate: 2,
   },
@@ -125,9 +131,15 @@ export const candidate = [
     party: 2,
     candidate: 4,
   },
+  {
+    id: 2,
+    office: 3,
+    party: 2,
+    candidate: 4,
+  },
 ];
 
-export const vote = [
+const vote = [
   {
     id: 1,
     createdOn: new Date("2022/04/01"),
