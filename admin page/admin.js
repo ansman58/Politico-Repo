@@ -39,6 +39,8 @@ const createParty = document.querySelector("#createParty");
 let hqAdd = document.querySelector(".hqAddress-label");
 let partyLogo = document.querySelector("#file");
 let party_Name = document.querySelector(".partyy-name");
+
+
 // Create office select dropdown for office type
 
 const carsContainer = document.querySelector(".cards-container");
@@ -196,16 +198,6 @@ createOffice.addEventListener('click', async (e) => {
     div.append(officeType);
     div.append(hqAddress);
     container.append(div);
-
-  //   Toastify ({
-  //     text: 'Office created successfully',
-  //     duration: 3000,
-  //     gravity: "top",
-  //     position: screenLeft,
-  //     style: {
-  //         background: "red"
-  //     }
-  // }).showToast();
   }
   }
 )

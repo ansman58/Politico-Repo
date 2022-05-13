@@ -117,21 +117,31 @@ const generateCandidateCard = (officeObj, partyObj, userObj) => {
   candProfDiv.appendChild(subBtn);
   parent.appendChild(candProfDiv);
 
+    subBtn.onclick = (e) => {
+      e.preventDefault()
+      candProfDialog.showModal()
+    }
+
+
   modalBtn1.onclick = (e) => {
     e.preventDefault();
     candProfDialog.close();
 
-    alert(`You have voted for ${userObj.lastname} ${userObj.firstname}`);
+    Toastify ({
+      text: `You have voted for ${userObj.lastname} ${userObj.firstname}`,
+      duration: 3000,
+      gravity: "top",
+      position: screenLeft,
+      style: {
+          background: "green"
+      }
+  }).showToast();
   };
 
   modalBtn2.onclick = (e) => {
     e.preventDefault();
 
     candProfDialog.close();
-
-    alert(
-      `You have rejected ${userObj.lastname} ${userObj.firstname} as ${officeObj.name}`
-    );
   };
 };
 

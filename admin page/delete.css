@@ -34,8 +34,6 @@ main{
 .to__be__deleted {
     display: flex;
     background-color: white;
-    /* max-width: 70%; */
-    /* margin-left: 15%; */
 }
 
 .to__be__deleted:nth-child(even) {

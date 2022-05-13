@@ -11,17 +11,12 @@ if (!token) {
 
 subBtn.addEventListener("click", async (event) => {
   event.preventDefault();
-// 
 
   const myOffice = parseInt(selectOffice.value);
   const myParty = parseInt(selectParty.value);
 
   // console.log(myOffice);
-  console.log('hiiiiiiii', myParty);
-
-  // const formData = new FormData();
-
-
+  // console.log('hiiiiiiii', myParty);
 
   const urlencoded = new URLSearchParams();
   urlencoded.append("party", myParty);
@@ -40,7 +35,23 @@ subBtn.addEventListener("click", async (event) => {
   console.log([...urlencoded]);
   console.log(result);
 
- 
+ if(result.status === 200) {
+  if ((result.data.type > 0)  && (result.data.name > 0)) {
+    Toastify ({
+      text: 'You have sucessfully applied for this office',
+      duration: 3000,
+      gravity: "top",
+      position: screenLeft,
+      style: {
+          background: "green"
+      }
+  }).showToast();
+  }
+
+  // if ((result.data.type)  && (result.data.name)) {
+  //   location.href = '../usercandidates/usercandidates.html'
+  // }
+ }
 });
 
 // To generate my office and party data from the backend
@@ -85,6 +96,8 @@ const fetchData = async () => {
   partyList = [...partyResult.data];
 
   generateData();
+
+  localStorage.setItem('offices', options)
 
   console.log(offItems);
 };

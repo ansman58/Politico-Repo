@@ -49,18 +49,19 @@ const generateCandidateCard = (offieObj, partyObj, userObj) => {
 }
 
 const generateCandidateHtml = (obj) => {
+    const candidateList = candidates.filter(el => el.office === obj.id)
 
     const parent = document.createElement("div");
+    
     const title = document.createElement("div");
     const list = document.createElement("div");
-    parent.setAttribute("class", "office-cand");
+
+    parent.setAttribute("class", "candidate__profile");
     title.setAttribute("class", "title");
     title.textContent = obj.name;
     list.setAttribute("class", `list-cand ${obj.name}`);
-  
-    parent.appendChild(title);
-    parent.appendChild(list);
-    section.appendChild(parent);
+      // parent.appendChild(list);
+    // section.appendChild(parent);
   
     if (candidateList) {
       candidateList.forEach((element) => {
@@ -124,7 +125,7 @@ const fetchData = async () => {
         createParty(element, partyUl)
     })
 
-    generateCandidateHtml()
+   offices.forEach(el => generateCandidateHtml(el) ) 
 }
 
 fetchData()

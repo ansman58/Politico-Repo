@@ -52,7 +52,7 @@ console.log(result)
 
       localStorage.setItem('token', token)
 
-      location.href = '../user/user.html';
+      location.href = '../usercandidates/usercandidates.html';
 
     }
        
