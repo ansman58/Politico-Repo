@@ -43,7 +43,9 @@ let party_Name = document.querySelector(".partyy-name");
 
 // Create office select dropdown for office type
 
-const carsContainer = document.querySelector(".cards-container");
+const container = document.querySelector(".create__party");
+const hqAddText = document.querySelector('#hqAddress-input')
+console.log(hqAddText.value)
 createParty.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -98,8 +100,8 @@ createParty.addEventListener("click", async (e) => {
     const partyName = document.createElement("p");
     const hqAddress = document.createElement("p");
     const iconsContainer = document.createElement('div')
-    const editIcon = document.createElement('i')
-    const deleteIcon = document.createElement('i')
+    const editIcon = document.createElement('button')
+    const deleteIcon = document.createElement('button')
 
     div.setAttribute("class", "to__be__deleted");
     imgTag.setAttribute("class", "logo");
@@ -107,9 +109,13 @@ createParty.addEventListener("click", async (e) => {
     imgTag.setAttribute("alt", "party logo");
     iconsContainer.setAttribute('class', 'icon-container')
     iconsContainer.setAttribute('id', 'pdp__delete__icon')
-    editIcon.setAttribute('class', 'fa-solid fa-pen-to-square edit-icon')
-    deleteIcon.setAttribute('class', 'fa-solid fa-trash-can delete-icon')
+    editIcon.setAttribute('class', 'edit-button')
+    deleteIcon.setAttribute('class', ' delete-button')
 
+    partyName.textContent = party_Name.value
+    editIcon.textContent = 'Edit'
+    deleteIcon.textContent = 'Delete'
+    hqAddress.textContent = hqAddText.value
     partyName.textContent = party_Name.value
 
     iconsContainer.append(editIcon)
@@ -118,7 +124,7 @@ createParty.addEventListener("click", async (e) => {
     div.append(partyName);
     div.append(hqAddress);
     div.append(iconsContainer)
-    carsContainer.append(div);
+    container.append(div);
 
     Toastify({
       text: "Party Successfully created!",
@@ -129,6 +135,8 @@ createParty.addEventListener("click", async (e) => {
         background: "green",
       },
     });
+
+   localStorage.setItem('party', )
   }
 });
 
