@@ -1,17 +1,50 @@
-// const myForm = document.querySelector('form#name')
-// const formValue = myForm.value
-// const btn = document.querySelector('#myBtn')
+const url = `http://localhost:4000`
+const fetchUsers = async () => {
+    try{
+        let users = await fetch(`http://localhost:4000/users/`)
 
+        if(!response.ok) {
+            throw new Error (`Failed to fetch user info: ${response.status}`)
+        }
+    
+        return await response.json()
+    } catch (error) {
+        console.log(error);
+    }
+}
 
+const listUsers = (elementFirstName) => {
+    const postElement = elementFirstName;
 
+    if (! postElement){
+        return;
+    } 
 
+    fetchUsers()
+        .then(posts => {
+            if(!posts) {
+                postElement.innerText = `No post`
+            }
+            for(let post of posts) {
+                postElement.appendChild(postElementName(post))
+            }
 
-const myForm = document.querySelector('#name');
-const formValue = myForm.value;
-const btn = document.querySelector('#myBtn');
+        })
+         .catch(error => {
+            console.log(error)
+        })
+    
+    
+    
+}
 
-btn.addEventListener('click', (event) => {
-    event.preventDefault
-    // alert('hiiiii')
-    alert(myForm.value)
-})
+const postElementName = (post) => {
+    const anchorElement = document.createElement('a')
+    anchorElement.setAttribute('href', `${url}/users/${post.name}`)
+    anchorElement.setAttribute('target', '_blank')
+
+    const postitle = document.createElement('h3')
+    postitle.appendChild(anchorElement)
+
+    return postitle;
+}

@@ -1,230 +1,211 @@
-// // Create a political party
-const createParty = document.querySelector('#create__party')
-const modal = document.querySelector('.create__party__dialog')
+let offices = [];
+let party = [];
+const signoutBtn = document.querySelector('#sign-out')
+console.log(signoutBtn)
+signoutBtn.addEventListener('click', (e) => {
+  removeToken = localStorage.removeItem('token')
+})
 
-// createParty.addEventListener('click', () => {
-//     modal.showModal()
-// })
+const getToken = localStorage.getItem("token");
 
-const modalSubmitBtn = document.querySelector('#create__party__btn')
-// const partyNameInput = document.querySelector('#"party__name')
+// const fetchData = async () => {
 
-// modalSubmitBtn.addEventListener('click', () => {
-//     alert(partyNameInput)
-//     // if(partyNameInput)
-  
-// })
+//   const deleteOffice = await fetch(`http://localhost:4000/office/delete`, {
+//     method: 'POST',
+//     body: formData,
+//     headers: {
+//       authorization: `Bearer ${getToken}`
+//     }
+//   })
+//   const deleteOfficeResult = await deleteOffice.json()
+//   offices = [...deleteOfficeResult.data]
+//   console.log(offices)
 
-// const partyBtn = document.querySelector('#create__party__btn')
-// // const partyNameInput = document.querySelector('#party__name')
-// const partyHqAddress = document.querySelector('#hq__address')
-
-// partyBtn.addEventListener('click', () => {
-       
-// })
-
-
-// working with createOffice buton
-
-// const officeBtn = document.querySelector('#create__office')
-
-
-// officeBtn.addEventListener('click', createOffice)
-
-// function createOffice() {
-//     const officeModal = document.querySelector('.create__office__dialog').showModal()
+//   const updateOffice = await fetch(`http://localhost:4000/office/update`, {
+//     method: 'POST',
+//     body: formData,
+//     headers: {
+//       authorization: `Bearer ${getToken}`
+//     }
+//   })
+//   const updateOfficeResult = await updateOffice.json()
+//   offices = [...updateOfficeResult.data]
+//   console.log(offices)
 // }
 
-// end of working with createOffice buton
+const createOffice = document.querySelector("#create__office");
+const createParty = document.querySelector("#createParty");
+
+let hqAdd = document.querySelector(".hqAddress-label");
+let partyLogo = document.querySelector("#file");
+let party_Name = document.querySelector(".partyy-name");
+// Create office select dropdown for office type
+
+const carsContainer = document.querySelector(".cards-container");
+createParty.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+ console.log('loading')
+
+  const formData = new FormData();
+  formData.append("name", party_Name.value);
+  formData.append("hqAddress", hqAdd.value);
+  formData.append("file", partyLogo.files[0]);
+
+  const addParty = await fetch(`http://localhost:4000/party/add`, {
+    method: "POST",
+    body: formData,
+    headers: {
+      authorization: `Bearer ${getToken}`,
+    },
+  });
+
+  const addPartyResult = await addParty.json();
+  console.log('data-fetched')
+  console.log(addPartyResult);
+
+  if (addPartyResult.status === 400) {
+    if (addPartyResult.error.file) {
+      Toastify({
+        text: addPartyResult.error.file,
+        duration: 3000,
+        gravity: "top",
+        position: screenLeft,
+        style: {
+          background: "red",
+        },
+      }).showToast();
+    }
+
+    if (addPartyResult.error.name) {
+      Toastify({
+        text: addPartyResult.error.name,
+        duration: 3000,
+        gravity: "top",
+        position: screenLeft,
+        style: {
+          background: "red",
+        },
+      }).showToast();
+    }
+  }
+
+  if (addPartyResult.status === 200) {
+    const div = document.createElement("div");
+    const imgTag = document.createElement("img");
+    const partyName = document.createElement("p");
+    const hqAddress = document.createElement("p");
+    const iconsContainer = document.createElement('div')
+    const editIcon = document.createElement('i')
+    const deleteIcon = document.createElement('i')
+
+    div.setAttribute("class", "to__be__deleted");
+    imgTag.setAttribute("class", "logo");
+    imgTag.setAttribute('src', addPartyResult.data.file)
+    imgTag.setAttribute("alt", "party logo");
+    iconsContainer.setAttribute('class', 'icon-container')
+    iconsContainer.setAttribute('id', 'pdp__delete__icon')
+    editIcon.setAttribute('class', 'fa-solid fa-pen-to-square edit-icon')
+    deleteIcon.setAttribute('class', 'fa-solid fa-trash-can delete-icon')
+
+    partyName.textContent = party_Name.value
+
+    iconsContainer.append(editIcon)
+    iconsContainer.append(deleteIcon)
+    div.append(imgTag);
+    div.append(partyName);
+    div.append(hqAddress);
+    div.append(iconsContainer)
+    carsContainer.append(div);
+
+    Toastify({
+      text: "Party Successfully created!",
+      duration: 3000,
+      gravity: "top",
+      position: screenLeft,
+      style: {
+        background: "green",
+      },
+    });
+  }
+});
+
+createOffice.addEventListener('click', async (e) => {
+  e.preventDefault()
+
+  const officeType = document.querySelector('#officeTypeId')
+  const officeName = document.querySelector('#office-name')
 
 
-// // working with delete icons
-//     const iconsContainer = document.querySelector('#pdp__delete__icon')
+  var urlencoded = new URLSearchParams()
+  urlencoded.append("type", officeType.value)
+  urlencoded.append("name", officeName.value)
 
-//     const toBeDel = document.querySelectorAll('.to__be__deleted')
-//     const toBeDelArr = Array.from(toBeDel)
+  const addOffice = await fetch(`http://localhost:4000/office/add`, {
+    method: "POST",
+    body: urlencoded,
+    headers: {
+      authorization: `Bearer ${getToken}`,
+    },
+  });
 
-//     const delElements = document.querySelectorAll('.icon-container')
-//     const change = Array.from(delElements)
-//     const deleteIcon = document.querySelectorAll('.delete-icon')
-//     const delIconArray = Array.from(deleteIcon)
-    // let a =  element.classList.contains('del') 
-    
-        // change.forEach()
-        //     let it = filtered.children
-                    
-        //     console.log(change)
+  const addOfficeResult = await addOffice.json();
+  console.log(addOfficeResult);
 
+  if(addOfficeResult.status === 400) {
+    if(addOfficeResult.error.message) {
+      Toastify ({
+        text: addOfficeResult.error.message,
+        duration: 3000,
+        gravity: "top",
+        position: screenLeft,
+        style: {
+            background: "red"
+        }
+    }).showToast();
+    }
 
-// end of working on delete icons
+    if(officeName.value === '') {
+      Toastify ({
+        text: 'Please include an office name',
+        duration: 3000,
+        gravity: "top",
+        position: screenLeft,
+        style: {
+            background: "red"
+        }
+    }).showToast();
+    }
+  }
 
-// *** DATA LIST BEGINS**** //
+  if(addOfficeResult.status === 200) {
+    const container = document.querySelector('.office-section')
 
+    const div = document.createElement("div");
+    const officeName = document.createElement("p");
+    const officeType = document.createElement("p");
+     const iconsContainer = document.createElement('div')
+     const editIcon = document.createElement('i')
+     const deleteIcon = document.createElement('i')
 
-const office = [
-    {
-      id: 1,
-      type: "federal",
-      name: "President",
-    },
-    {
-      id: 2,
-      type: "legislative",
-      name: "Senate",
-    },
-    {
-      id: 3,
-      type: "state",
-      name: "Governor",
-    },
-    {
-      id: 4,
-      type: "local government",
-      name: "Chairman",
-    },
-    {
-      id: 5,
-      type: "federal",
-      name: "Vice President",
-    },
-    {
-      id: 6,
-      type: "state",
-      name: "Deputy Governor",
-    },
-  ];
-  
-  const party = [
-    {
-      id: 1,
-      name: "PDP",
-      hqAddress: "Abuja",
-      logoURL:
-        "https://www.inecnigeria.org/wp-content/uploads/2019/02/PDP-Constitution.pdf",
-    },
-  
-    {
-      id: 2,
-      name: "APC",
-      hqAddress: "Osun",
-      logoURL:
-        "https://www.inecnigeria.org/wp-content/uploads/2019/02/APC-Constitution.pdf",
-    },
-  
-    {
-      id: 3,
-      name: "SPC",
-      hqAddress: "Delta",
-      logoURL:
-        "https://www.inecnigeria.org/wp-content/uploads/2019/02/APC-Constitution.pdf",
-    },
-  
-    {
-      id: 4,
-      name: "APGA",
-      hqAddress: "Abuja",
-      logoURL:
-        "https://www.inecnigeria.org/wp-content/uploads/2019/02/SDP-Constitution.pdf",
-    },
-  ];
+    div.setAttribute("class", "to__be__deleted");
 
-  const check = party.map(el  => el.hqAddress)
-  console.log(check)
-  
-  const user = [
-    {
-      id: 1,
-      firstname: "Anslem",
-      lastname: "Nnakwe",
-      othername: "",
-      email: "emaukjhhd",
-      phoneNumber: "868576576",
-      passportUrl: "../images/politician1.jpg",
-      isAdmin: true,
-      role: "user",
-    },
-    {
-      id: 2,
-      firstname: "Anslem",
-      lastname: "Nnakwe",
-      othername: "",
-      email: "emaukjhhd",
-      phoneNumber: "868576576",
-      passportUrl: "../images/politician1.jpg",
-      isAdmin: false,
-      role: "politician",
-    },
-    {
-      id: 4,
-      firstname: "Anslem",
-      lastname: "Nnakwe",
-      othername: "",
-      email: "emaukjhhd",
-      phoneNumber: "868576576",
-      passportUrl: "../images/politician1.jpg",
-      isAdmin: false,
-      role: "politician",
-    },
-    {
-      id: 3,
-      firstname: "Anslem",
-      lastname: "Nnakwe",
-      othername: "",
-      email: "emaukjhhd",
-      phoneNumber: "868576576",
-      passportUrl: "../images/politician1.jpg",
-      isAdmin: false,
-      role: "user",
-    },
-  ];
-  
-  const candidate = [
-    {
-      id: 1,
-      office: 1,
-      party: 4,
-      candidate: 2,
-    },
-    {
-      id: 1,
-      office: 4,
-      party: 4,
-      candidate: 2,
-    },
-    {
-      id: 2,
-      office: 2,
-      party: 2,
-      candidate: 4,
-    },
-    {
-      id: 2,
-      office: 3,
-      party: 2,
-      candidate: 4,
-    },
-  ];
-  
-  const vote = [
-    {
-      id: 1,
-      createdOn: new Date("2022/04/01"),
-      createdBy: 1,
-      office: 1,
-      candidate: 2,
-    },
-  ];
+    iconsContainer.append(editIcon)
+    iconsContainer.append(deleteIcon)
+    div.append(officeName);
+    div.append(officeType);
+    div.append(hqAddress);
+    container.append(div);
 
-// *** DATA LIST ENDS ****//
-
-const createNewParty = (logoObj, partyObj, hqAddressOb) => {
-    createParty.addEventListener('click', () => {
-        modal.showModal()
-    })
-
-
-    const partyList = party.filter(el => el.name)
-    // console.log(partyList)
-}
-createNewParty(party.logoURL, party.name, party.hqAddress)
-console.log(party.hqAddress)
+  //   Toastify ({
+  //     text: 'Office created successfully',
+  //     duration: 3000,
+  //     gravity: "top",
+  //     position: screenLeft,
+  //     style: {
+  //         background: "red"
+  //     }
+  // }).showToast();
+  }
+  }
+)

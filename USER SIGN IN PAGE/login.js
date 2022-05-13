@@ -1,57 +1,60 @@
-const hamburger = document.querySelector('.hamburger')
-const menuList = document.querySelector('.menu__ul');
-const loginButton = document.querySelector('.login__submit__button')
+const btn = document.querySelector('.login__submit__button')
+
+const userPassword = document.querySelector('#password')
+const userEmail = document.querySelector('#email')
+
+  btn.addEventListener ('click', async (event)  => {
+    event.preventDefault();
+
+    const formData = new FormData()
+    formData.append('password', userPassword.value)
+    formData.append('email', userEmail.value)
+
+    const response = await fetch (`http://localhost:4000/users/login`, {
+        method: 'POST',
+        body: formData,
+        
+    })
+
+    const result = await response.json()
 
 
- hamburger.addEventListener('click', () => {
-    menuList.classList.toggle('active');
-});
+console.log(result)
 
-loginButton.addEventListener('click', (event) => {
-    event.preventDefault;
-    
-    const userEmail = document.querySelector('#email').value.trim();
-    const userPassword = document.querySelector('#password').value.trim();
-
-    const error = [];
-
-    if (userEmail === '') {
-        error.push('Email cannot be empty')
-        console.log(error)
-    }
-
-    if(userPassword === '') {
-        error.push(`Password cannot be empty`)
-        console.log(error)
-    }
-
-    if(userPassword !== '' && userPassword.length <= 6) {
-        error.push(`Password cannot be less than six characters`)
-        console.log(error)
-    }
-
-    if(error.length > 0) {
-        for(let i = 0; i < error.length; i++) {
-            Toastify ({
-                text: error[i],
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                style: {
-                    background: "red"
-                }
-            }).showToast();
-        }
-    }
-    else {
+    if(result.status === 400) {
+      if(result.error.email) {
         Toastify ({
-            text: "Success",
-            duration: 3000,
-            gravity: "bottom",
-            position: screenLeft,
-            style: {
-                background: "green"
-            }
-        }).showToast();
+          text: result.error.email,
+          duration: 3000,
+          gravity: "top",
+          position: screenLeft,
+          style: {
+              background: "red"
+          }
+      }).showToast();
+      }
+
+      if(result.error.password) {
+        Toastify ({
+          text: result.error.password,
+          duration: 3000,
+          gravity: "top",
+          position: screenLeft,
+          style: {
+              background: "red"
+          }
+      }).showToast();
+      }
     }
-})
+
+    if (result.status === 200) {
+      const token = result.data.token
+
+      localStorage.setItem('token', token)
+
+      location.href = '../user/user.html';
+
+    }
+       
+}
+)

@@ -33,9 +33,6 @@ body {
     position: relative;
 }
 
-/* .just__another__div {
-    fle
-} */
 
 .activities {
     background-color: #363740;
@@ -92,24 +89,9 @@ body {
     margin-inline: 1rem;
 }
 
-/* @media (min-width: 801px) {
-    .admin__profile__image p::after {
-        content: '';
-        width: 2px;
-        top: 0;
-        bottom: 0;
-        position: absolute;
-        background-color: #494d5e;
-        margin-left: 1rem;
-    }
-} */
-
 .admin__profile__image p {
     margin-right: 1rem;
 }
-
-
-
 
 .main__footer {
     background-color: rgb(25, 23, 23);
@@ -118,6 +100,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+label{
+    display: block;
 }
 
 [data-type = "office"], [data-type = "party"] {

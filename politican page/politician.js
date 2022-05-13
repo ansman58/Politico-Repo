@@ -1,29 +1,91 @@
-const politicalParty = [
-    {
-        "id": 0,
-        "name": "PDP",
-        "hqAddress": "Abuja",
-        "logoURL": "https://www.inecnigeria.org/wp-content/uploads/2019/02/PDP-Constitution.pdf"
-    },
+const subBtn = document.querySelector("#submit"); 
 
-    {
-        "id": 1,
-        "name": "APC",
-        "hqAddress": "Osun",
-        "logoURL": "https://www.inecnigeria.org/wp-content/uploads/2019/02/APC-Constitution.pdf"
-    },
+const selectParty = document.querySelector("#party__name");
+const selectOffice = document.querySelector("#political__office");
 
-    {
-        "id": 3,
-        "name": "APC",
-        "hqAddress": "Delta",
-        "logoURL": "https://www.inecnigeria.org/wp-content/uploads/2019/02/APC-Constitution.pdf"
-    },
+const token = localStorage.getItem("token");
 
-    {
-        "id": 4,
-        "name": "Ogun",
-        "hqAddress": "SDP",
-        "logoURL": "https://www.inecnigeria.org/wp-content/uploads/2019/02/SDP-Constitution.pdf"
-    }
-]
+if (!token) {
+  location.href = "../USER SIGN IN PAGE/login.html";
+}
+
+subBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+// 
+
+  const myOffice = parseInt(selectOffice.value);
+  const myParty = parseInt(selectParty.value);
+
+  // console.log(myOffice);
+  console.log('hiiiiiiii', myParty);
+
+  // const formData = new FormData();
+
+
+
+  const urlencoded = new URLSearchParams();
+  urlencoded.append("party", myParty);
+  urlencoded.append("office", myOffice);
+
+  const response = await fetch(`http://localhost:4000/candidate/add`, {
+    method: "POST",
+    body: urlencoded,
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  const result = await response.json();
+
+  console.log([...urlencoded]);
+  console.log(result);
+
+ 
+});
+
+// To generate my office and party data from the backend
+const options = (obj, parent) => {
+  const option = document.createElement("option");
+  option.setAttribute("value", obj.id);
+  option.textContent = obj.name;
+
+  parent.appendChild(option);
+};
+
+const generateData = () => {
+  officeList.forEach((office) => {
+    options(office, selectOffice);
+  });
+
+  partyList.forEach((party) => {
+    options(party, selectParty);
+  });
+};
+
+let officeList = [];
+let partyList = [];
+const fetchData = async () => {
+  const response = await fetch(`http://localhost:4000/office/`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const result = await response.json();
+  const offItems = result.data;
+  officeList = [...offItems];
+
+  const resParty = await fetch(`http://localhost:4000/party/`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const partyResult = await resParty.json();
+  partyList = [...partyResult.data];
+
+  generateData();
+
+  console.log(offItems);
+};
+fetchData();
