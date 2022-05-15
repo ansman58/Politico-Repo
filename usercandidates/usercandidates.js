@@ -12,7 +12,7 @@ let users = [];
 
 let candidates = [];
   
-let vote = [];
+// let vote = [];
 const token = localStorage.getItem('token')
 
 
@@ -52,7 +52,7 @@ console.log(userResult)
 
 const candResponse = await fetch(`http://localhost:4000/candidate/`,{
   method: 'GET',
-  headers: {
+  headers: { 
     authorization: `Bearer ${token}`
   }
 })
@@ -65,6 +65,7 @@ offices.forEach((el) => generateOfficeHtml(el));
 }
 obtainData()
 
+// let modalBtn1;
 
 const generateCandidateCard = (officeObj, partyObj, userObj) => {
   const parent = document.querySelector(`.${officeObj.name}`);
@@ -86,10 +87,13 @@ const generateCandidateCard = (officeObj, partyObj, userObj) => {
   candProfHeader.setAttribute("data-type", "candidate");
   candProfDialog.setAttribute("class", "modal");
   modalP.setAttribute("class", "office");
-  candProfForm.setAttribute("method", "dialog");
+  // candProfForm.setAttribute("method", "dialog");
   modalBtn1.setAttribute("class", "yes-btn");
   modalBtn2.setAttribute("class", "no-btn");
   modalBtn1.setAttribute("type", "submit");
+  modalBtn1.setAttribute("data-candId", userObj.id);
+  modalBtn1.setAttribute("data-candOffice", officeObj.id);
+  modalBtn1.setAttribute("data-candParty", partyObj.id);
   modalBtn2.setAttribute("type", "submit");
   partyName.setAttribute("class", "office");
   officeName.setAttribute("class", "office");
@@ -117,28 +121,60 @@ const generateCandidateCard = (officeObj, partyObj, userObj) => {
   candProfDiv.appendChild(subBtn);
   parent.appendChild(candProfDiv);
 
+
+  const createdByAttribute = modalBtn1.getAttribute("data-candId")
+  const voteOffice = modalBtn1.getAttribute("data-candOffice")
+  const voteCand = modalBtn1.getAttribute("data-candParty")
+
     subBtn.onclick = (e) => {
       e.preventDefault()
       candProfDialog.showModal()
+
+      modalBtn1.onclick = async (e) => {
+        e.preventDefault();
+        // candProfDialog.close();
+        alert(voteOffice)
+        
+
+        console.log('Looking for candidates', candidates)
+
+        const urlencoded = new URLSearchParams();
+        
+        urlencoded.append('createdOn', new Date("2022/04/01"))
+        urlencoded.append('createdBy', createdByAttribute)
+        urlencoded.append('office', voteOffice)
+        urlencoded.append('candidate', voteCand)
+    
+    
+        try {
+          const fetchVote = await fetch(`http://localhost:4000/vote/add`, {
+            method: 'POST',
+            body: urlencoded,
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+          })
+          const voteRes = await fetchVote.json()
+          console.log(voteRes)
+
+        } catch (error) {
+          console.log(error)
+        }
+    
+      //   Toastify ({
+      //     text: `You have voted for ${userObj.lastname} ${userObj.firstname}`,
+      //     duration: 3000,
+      //     gravity: "top",
+      //     position: screenLeft,
+      //     style: {
+      //         background: "green"
+      //     }
+      // }).showToast();
+      };
     }
 
-
-  modalBtn1.onclick = (e) => {
-    e.preventDefault();
-    candProfDialog.close();
-
-    Toastify ({
-      text: `You have voted for ${userObj.lastname} ${userObj.firstname}`,
-      duration: 3000,
-      gravity: "top",
-      position: screenLeft,
-      style: {
-          background: "green"
-      }
-  }).showToast();
-  };
-
   modalBtn2.onclick = (e) => {
+    // alert('hiiiii')
     e.preventDefault();
 
     candProfDialog.close();

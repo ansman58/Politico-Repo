@@ -124,16 +124,8 @@ signupButton.addEventListener("click", async (event) => {
       }).showToast();
     }
   }
-console.log('show Result', result)
+  console.log("show Result", result);
   if (result.status === 200) {
-
-
-    if (result.data.role === "politician") {
-      location.href = "../politician page/politician.html";
-    }
-
-    if (result.data.role === "citizen") {
-      location.href = "../usercandidates/usercandidates.html";
-    }
+    location.href = "../USER SIGN IN PAGE/login.html";
   }
 });

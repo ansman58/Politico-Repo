@@ -21,58 +21,57 @@ const createParty = (obj, parent) => {
     parent.append(partyName)
 }
 
-const generateCandidateCard = (offieObj, partyObj, userObj) => {
-    const header = document.querySelector('#candidate__profile')
+// const generateCandidateCard = (offieObj, partyObj, userObj) => {
+//     const header = document.querySelector('#candidate__profile')
 
-    const candProfDiv = document.createElement("div");
-    const candProfImg = document.createElement("img");
-    const candProfHeader = document.createElement("h3");
-    const officeName = document.createElement("p");
+//     const candProfDiv = document.createElement("div");
+//     const candProfImg = document.createElement("img");
+//     const candProfHeader = document.createElement("h3");
+//     const officeName = document.createElement("p");
   
-    candProfDiv.setAttribute("class", "candidate__profile");
-    candProfImg.setAttribute("class", "image");
-    candProfHeader.setAttribute("data-type", "candidate");
+//     candProfDiv.setAttribute("class", "candidate__profile");
+//     candProfImg.setAttribute("class", "image");
+//     candProfHeader.setAttribute("data-type", "candidate");
 
-    officeName.setAttribute("class", "office");
-    candProfImg.setAttribute("src", userObj.passportUrl);
+//     officeName.setAttribute("class", "office");
+//     candProfImg.setAttribute("src", userObj.passportUrl);
 
 
-    candProfHeader.textContent = `${userObj.lastname} ${userObj.firstname}`;
-    officeName.textContent = officeObj.name;
+//     candProfHeader.textContent = `${userObj.lastname} ${userObj.firstname}`;
+//     officeName.textContent = officeObj.name;
     
 
-    header.append(candProfDiv)
-    header.append(candProfImg)
-    header.append(candProfHeader)
-    header.append(officeName)
+//     header.append(candProfDiv)
+//     header.append(candProfImg)
+//     header.append(candProfHeader)
+//     header.append(officeName)
 
-}
+// }
 
-const generateCandidateHtml = (obj) => {
-    const candidateList = candidates.filter(el => el.office === obj.id)
+// let candidateList;
+// let partyData;
+// let userData
+// let officeData
+// const filterOffice = offices.filter()
 
-    const parent = document.createElement("div");
-    
-    const title = document.createElement("div");
-    const list = document.createElement("div");
+    // const candidateList = candidates.forEach((element) => {
+    // const officeData = offices.filter(el => el.id === element.office)
+    // if(candidateList){
+    //     const partyData = party.find((el) => el.id === element.party);
+    //     const userData = users.find((el) => el.id === element.candidate);
+    //     generateCandidateHtml(userData, partyData, officeData);
+    // }
+    // });
+    // console.log(candidateList)
 
-    parent.setAttribute("class", "candidate__profile");
-    title.setAttribute("class", "title");
-    title.textContent = obj.name;
-    list.setAttribute("class", `list-cand ${obj.name}`);
-      // parent.appendChild(list);
-    // section.appendChild(parent);
+
+// return candidateList
   
-    if (candidateList) {
-      candidateList.forEach((element) => {
-        const partyData = party.find((el) => el.id === element.party);
-        const userData = users.find((el) => el.id === element.candidate);
-        generateCandidateCard(obj, partyData, userData);
-      });
-    }
+  
 
 
-}
+
+
 
 
 // fetch candidate info
@@ -124,8 +123,47 @@ const fetchData = async () => {
     party.forEach((element) => {
         createParty(element, partyUl)
     })
+console.log(candidates)
+    // contestingCandidates()
+//    offices.forEach(el => generateCandidateHtml(el) ) 
+    offices.forEach(el=> generateCands(el))
+}
+console.log(offices)
+fetchData()
+const generateCandidateHtml = (userObj, officeObj) => {
+    // candidateList = candidates.filter(el => el.office === officeObj.id)
+    const parent = document.querySelector(`.${officeObj.name}`);
 
-   offices.forEach(el => generateCandidateHtml(el) ) 
+    const candImg = document.createElement('img')
+    const candName = document.createElement("h3");
+    const candOffice = document.createElement("p");
+
+    candImg.setAttribute("class", "image");
+    candImg.setAttribute('src', userObj.passportUrl)
+    candName.setAttribute('data-type', 'candidate')
+
+    candName.textContent = `${userObj.firstname} ${userObj.lastname}`
+    candOffice.textContent = officeObj.name
+
 }
 
-fetchData()
+const generateCands = (obj) => {
+    const candidateList = candidates.filter((el) => el.office === obj.id);
+
+    const parentDiv = document.createElement("div");
+    parentDiv.setAttribute("class", "candidate__profile");
+
+    console.log('hiiii im caandlist', candidateList)
+
+    if(candidateList){
+        candidates.forEach(element => {
+            const officeData = offices.find(el => el.id === element.party)
+            const userData = users.find(el => el.id === element.candidate)
+            generateCandidateHtml(userData, partyData,candidateList)
+    })
+}
+}
+
+
+
+

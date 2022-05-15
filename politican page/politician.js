@@ -15,9 +15,6 @@ subBtn.addEventListener("click", async (event) => {
   const myOffice = parseInt(selectOffice.value);
   const myParty = parseInt(selectParty.value);
 
-  // console.log(myOffice);
-  // console.log('hiiiiiiii', myParty);
-
   const urlencoded = new URLSearchParams();
   urlencoded.append("party", myParty);
   urlencoded.append("office", myOffice);
