@@ -21,59 +21,6 @@ const createParty = (obj, parent) => {
     parent.append(partyName)
 }
 
-// const generateCandidateCard = (offieObj, partyObj, userObj) => {
-//     const header = document.querySelector('#candidate__profile')
-
-//     const candProfDiv = document.createElement("div");
-//     const candProfImg = document.createElement("img");
-//     const candProfHeader = document.createElement("h3");
-//     const officeName = document.createElement("p");
-  
-//     candProfDiv.setAttribute("class", "candidate__profile");
-//     candProfImg.setAttribute("class", "image");
-//     candProfHeader.setAttribute("data-type", "candidate");
-
-//     officeName.setAttribute("class", "office");
-//     candProfImg.setAttribute("src", userObj.passportUrl);
-
-
-//     candProfHeader.textContent = `${userObj.lastname} ${userObj.firstname}`;
-//     officeName.textContent = officeObj.name;
-    
-
-//     header.append(candProfDiv)
-//     header.append(candProfImg)
-//     header.append(candProfHeader)
-//     header.append(officeName)
-
-// }
-
-// let candidateList;
-// let partyData;
-// let userData
-// let officeData
-// const filterOffice = offices.filter()
-
-    // const candidateList = candidates.forEach((element) => {
-    // const officeData = offices.filter(el => el.id === element.office)
-    // if(candidateList){
-    //     const partyData = party.find((el) => el.id === element.party);
-    //     const userData = users.find((el) => el.id === element.candidate);
-    //     generateCandidateHtml(userData, partyData, officeData);
-    // }
-    // });
-    // console.log(candidateList)
-
-
-// return candidateList
-  
-  
-
-
-
-
-
-
 // fetch candidate info
 const fetchData = async () => {
     const response = await fetch (`http://localhost:4000/candidate/`, {
@@ -126,32 +73,32 @@ const fetchData = async () => {
 console.log(candidates)
     // contestingCandidates()
 //    offices.forEach(el => generateCandidateHtml(el) ) 
-    offices.forEach(el=> generateCands(el))
+    const filOffice = offices.filter(el=> generateCands(el))
 }
 console.log(offices)
 fetchData()
-const generateCandidateHtml = (userObj, officeObj) => {
+const generateCandidateHtml = (obj) => {
     // candidateList = candidates.filter(el => el.office === officeObj.id)
-    const parent = document.querySelector(`.${officeObj.name}`);
+    // const parent = document.querySelector(`.${officeObj.name}`);
+
+    const parentDiv = document.createElement("div");
+    parentDiv.setAttribute("class", "candidate__profile");
 
     const candImg = document.createElement('img')
     const candName = document.createElement("h3");
     const candOffice = document.createElement("p");
 
     candImg.setAttribute("class", "image");
-    candImg.setAttribute('src', userObj.passportUrl)
+    candImg.setAttribute('src', obj.passportUrl)
     candName.setAttribute('data-type', 'candidate')
 
-    candName.textContent = `${userObj.firstname} ${userObj.lastname}`
+    candName.textContent = `${obj.firstname} ${obj.lastname}`
     candOffice.textContent = officeObj.name
 
 }
 
 const generateCands = (obj) => {
     const candidateList = candidates.filter((el) => el.office === obj.id);
-
-    const parentDiv = document.createElement("div");
-    parentDiv.setAttribute("class", "candidate__profile");
 
     console.log('hiiii im caandlist', candidateList)
 
@@ -163,7 +110,3 @@ const generateCands = (obj) => {
     })
 }
 }
-
-
-
-

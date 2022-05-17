@@ -16,8 +16,6 @@ let candidates = [];
 const token = localStorage.getItem('token')
 
 
-
-
 const obtainData = async () => {
   const officeRes = await fetch(`http://localhost:4000/office/`, {
     method: 'GET',
@@ -135,12 +133,11 @@ const generateCandidateCard = (officeObj, partyObj, userObj) => {
         // candProfDialog.close();
         alert(voteOffice)
         
-
         console.log('Looking for candidates', candidates)
 
         const urlencoded = new URLSearchParams();
         
-        urlencoded.append('createdOn', new Date("2022/04/01"))
+        // urlencoded.append('createdOn', new Date("2022/04/01"))
         urlencoded.append('createdBy', createdByAttribute)
         urlencoded.append('office', voteOffice)
         urlencoded.append('candidate', voteCand)

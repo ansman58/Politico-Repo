@@ -53,6 +53,12 @@
     background-color: #fff;
 }
 
+.result-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
 @media (max-width: 800px) {
     .election__update {
         width: 100%; 

@@ -44,10 +44,6 @@ subBtn.addEventListener("click", async (event) => {
       }
   }).showToast();
   }
-
-  // if ((result.data.type)  && (result.data.name)) {
-  //   location.href = '../usercandidates/usercandidates.html'
-  // }
  }
 });
 
