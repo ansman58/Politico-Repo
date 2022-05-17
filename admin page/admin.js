@@ -30,7 +30,7 @@ createParty.addEventListener("click", async (e) => {
   formData.append("hqAddress", hqAdd.value);
   formData.append("file", partyLogo.files[0]);
 
-  const addParty = await fetch(`http://localhost:4000/party/add`, {
+  const addParty = await fetch(`https://ancient-ridge-06187.herokuapp.com/party/add`, {
     method: "POST",
     body: formData,
     headers: {
@@ -93,7 +93,7 @@ createOffice.addEventListener("click", async (e) => {
   urlencoded.append("type", officeType.value);
   urlencoded.append("name", officeName.value);
 
-  const addOffice = await fetch(`http://localhost:4000/office/add`, {
+  const addOffice = await fetch(`https://ancient-ridge-06187.herokuapp.com/office/add`, {
     method: "POST",
     body: urlencoded,
     headers: {
@@ -145,7 +145,7 @@ createOffice.addEventListener("click", async (e) => {
 
 const getAllParties = async () => {
   try {
-    const fetchParties = await fetch(`http://localhost:4000/party/`, {
+    const fetchParties = await fetch(`https://ancient-ridge-06187.herokuapp.com/party/`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${getToken}`,
@@ -228,7 +228,7 @@ const generatePartyHtml = (obj) => {
       urlencoded.append("file", logoParty.files[0]);
 
       const editParty = await fetch(
-        `http://localhost:4000/party/update/${obj.id}`,
+        `https://ancient-ridge-06187.herokuapp.com/party/update/${obj.id}`,
         {
           method: "PUT",
           body: urlencoded,
@@ -265,7 +265,7 @@ const generatePartyHtml = (obj) => {
     modalDelBtn.addEventListener("click", async () => {
       // alert('Hiii,')
       const fetchData = await fetch(
-        `http://localhost:4000/party/delete/${obj.id}`,
+        `https://ancient-ridge-06187.herokuapp.com/party/delete/${obj.id}`,
         {
           method: "DELETE",
           body: urlencoded,
@@ -286,7 +286,7 @@ const generatePartyHtml = (obj) => {
 };
 
 const fetchAllOffices = async () => {
-  const fetchOffices = await fetch(`http://localhost:4000/office/`, {
+  const fetchOffices = await fetch(`https://ancient-ridge-06187.herokuapp.com/office/`, {
     method: "GET",
     headers: {
       authorization: `Bearer ${getToken}`,
@@ -356,7 +356,7 @@ const generateOfficesHtml = (obj) => {
       urlencoded.append("name", officeNameInput.value);
 
       const fetchOffices = await fetch(
-        `http://localhost:4000/office/update/${obj.id}`,
+        `https://ancient-ridge-06187.herokuapp.com/office/update/${obj.id}`,
         {
           method: "PUT",
           body: urlencoded,
@@ -386,7 +386,7 @@ const generateOfficesHtml = (obj) => {
       // alert('hiii')
       try {
         const fetchOffices = fetch(
-          `http://localhost:4000/office/delete/${obj.id}`,
+          `https://ancient-ridge-06187.herokuapp.com/office/delete/${obj.id}`,
           {
             method: "DELETE",
             headers: {

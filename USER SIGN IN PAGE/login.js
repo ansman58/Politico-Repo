@@ -10,7 +10,7 @@ btn.addEventListener("click", async (event) => {
   formData.append("password", userPassword.value);
   formData.append("email", userEmail.value);
 
-  const response = await fetch(`http://localhost:4000/users/login`, {
+  const response = await fetch(`https://ancient-ridge-06187.herokuapp.com/users/login`, {
     method: "POST",
     body: formData,
   });

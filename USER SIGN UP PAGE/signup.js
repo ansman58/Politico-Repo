@@ -32,7 +32,7 @@ signupButton.addEventListener("click", async (event) => {
 
   // confirmPassword === userPassword ?
 
-  const response = await fetch(`http://localhost:4000/users/signup`, {
+  const response = await fetch(`https://ancient-ridge-06187.herokuapp.com/users/signup`, {
     method: "POST",
     body: formData,
   });

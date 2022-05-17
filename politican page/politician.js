@@ -19,7 +19,7 @@ subBtn.addEventListener("click", async (event) => {
   urlencoded.append("party", myParty);
   urlencoded.append("office", myOffice);
 
-  const response = await fetch(`http://localhost:4000/candidate/add`, {
+  const response = await fetch(`https://ancient-ridge-06187.herokuapp.com/candidate/add`, {
     method: "POST",
     body: urlencoded,
     headers: {
@@ -69,7 +69,7 @@ const generateData = () => {
 let officeList = [];
 let partyList = [];
 const fetchData = async () => {
-  const response = await fetch(`http://localhost:4000/office/`, {
+  const response = await fetch(`https://ancient-ridge-06187.herokuapp.com/office/`, {
     method: "GET",
     headers: {
       authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const fetchData = async () => {
   const offItems = result.data;
   officeList = [...offItems];
 
-  const resParty = await fetch(`http://localhost:4000/party/`, {
+  const resParty = await fetch(`https://ancient-ridge-06187.herokuapp.com/party/`, {
     method: "GET",
     headers: {
       authorization: `Bearer ${token}`,

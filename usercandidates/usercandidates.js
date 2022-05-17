@@ -17,7 +17,7 @@ const token = localStorage.getItem('token')
 
 
 const obtainData = async () => {
-  const officeRes = await fetch(`http://localhost:4000/office/`, {
+  const officeRes = await fetch(`https://ancient-ridge-06187.herokuapp.com/office/`, {
     method: 'GET',
     headers: {
       authorization: `Bearer ${token}`
@@ -27,7 +27,7 @@ const obtainData = async () => {
   offices = [...officeResult.data]
   console.log(officeResult)
 
-const partyRes = await fetch(`http://localhost:4000/party/`,{
+const partyRes = await fetch(`https://ancient-ridge-06187.herokuapp.com/party/`,{
   method: 'GET',
   headers: {
     authorization: `Bearer ${token}`
@@ -38,7 +38,7 @@ party = [...partyResult.data]
 console.log(partyResult)
 
 
-const userRes = await fetch(`http://localhost:4000/users/`,{
+const userRes = await fetch(`https://ancient-ridge-06187.herokuapp.com/users/`,{
   method: 'GET',
   headers: {
     authorization: `Bearer ${token}`
@@ -48,7 +48,7 @@ const userResult = await userRes.json()
 users = [...userResult.data]
 console.log(userResult)
 
-const candResponse = await fetch(`http://localhost:4000/candidate/`,{
+const candResponse = await fetch(`https://ancient-ridge-06187.herokuapp.com/candidate/`,{
   method: 'GET',
   headers: { 
     authorization: `Bearer ${token}`
@@ -144,7 +144,7 @@ const generateCandidateCard = (officeObj, partyObj, userObj) => {
     
     
         try {
-          const fetchVote = await fetch(`http://localhost:4000/vote/add`, {
+          const fetchVote = await fetch(`https://ancient-ridge-06187.herokuapp.com/vote/add`, {
             method: 'POST',
             body: urlencoded,
             headers: {
