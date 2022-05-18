@@ -2,6 +2,10 @@ const hamburger = document.querySelector(".hamburger");
 const menuList = document.querySelector(".menu__ul");
 const signupButton = document.querySelector(".signup__button");
 
+const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+const phoneno = /^\d{11}$/
+
 hamburger.addEventListener("click", () => {
   menuList.classList.toggle("active");
 });
@@ -21,10 +25,12 @@ const phoneNumber = document.querySelector("#pNumber");
 signupButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
+  console.log(userRole.value)
+
   const formData = new FormData();
   formData.append("firstname", firstName.value);
   formData.append("lastname", lastName.value);
-  formData.append("file", file.files[0]);
+  // formData.append("file", file.files[0]);
   formData.append("phoneNumber", phoneNumber.value);
   formData.append("role", userRole.value);
   formData.append("password", userPassword.value);
@@ -32,7 +38,7 @@ signupButton.addEventListener("click", async (event) => {
 
   // confirmPassword === userPassword ?
 
-  const response = await fetch(`https://ancient-ridge-06187.herokuapp.com/users/signup`, {
+  const response = await fetch(`http://localhost:4000/users/signup`, {
     method: "POST",
     body: formData,
   });
@@ -65,7 +71,7 @@ signupButton.addEventListener("click", async (event) => {
       }).showToast();
     }
 
-    if (result.error.email) {
+    if (!userEmail.value.match(mailformat)) {
       Toastify({
         text: result.error.email,
         duration: 3000,
@@ -101,20 +107,32 @@ signupButton.addEventListener("click", async (event) => {
       }).showToast();
     }
 
-    if (result.error.file) {
+    // if (result.error.file) {
+    //   Toastify({
+    //     text: result.error.file,
+    //     duration: 3000,
+    //     gravity: "top",
+    //     position: screenLeft,
+    //     style: {
+    //       background: "red",
+    //     },
+    //   }).showToast();
+    // }
+    // if (result.error.role) {
+    //   Toastify({
+    //     text: result.error.role,
+    //     duration: 3000,
+    //     gravity: "top",
+    //     position: screenLeft,
+    //     style: {
+    //       background: "red",
+    //     },
+    //   }).showToast();
+    // }
+
+    if (!phoneNumber.value.match(phoneno)) {
       Toastify({
-        text: result.error.file,
-        duration: 3000,
-        gravity: "top",
-        position: screenLeft,
-        style: {
-          background: "red",
-        },
-      }).showToast();
-    }
-    if (result.error.role) {
-      Toastify({
-        text: result.error.role,
+        text: result.error.phoneNumber,
         duration: 3000,
         gravity: "top",
         position: screenLeft,
@@ -125,6 +143,7 @@ signupButton.addEventListener("click", async (event) => {
     }
   }
   console.log("show Result", result);
+  
   if (result.status === 200) {
     location.href = "../USER SIGN IN PAGE/login.html";
   }
